@@ -1,0 +1,25 @@
+{
+    "name": "interactiveplus/interactivepdk-2020-captchasyscore",
+    "description": "Core Support Library for InteractivePlus's New Identity Provider System's Captcha generation, storage, and validation",
+    "type": "library",
+    "license": "MIT",
+    "require":{
+        "php": ">=7.1.0",
+        "thingengineer/mysqli-database-class": "~2.9",
+        "interactiveplus/interactivepdk-2020-corelib": "dev-master",
+        "gregwar/captcha": "~1.1"
+    },
+    "require-dev":{
+        "phpunit/phpunit": "^9"
+    },
+    "autoload":{
+        "psr-4":{
+            "InteracitvePlus\\PDK2020CaptchaCore\\": "src/"
+        }
+    },
+    "autoload-dev":{
+        "psr-4":{
+            "InteractivePlus\\PDK2020CaptchaTest\\": "test/"
+        }
+    }
+}
