@@ -32,7 +32,8 @@ class CaptchaRepository implements CaptchaInfoStorage{
             $captchaBuilder->getPhrase(),
             $captchaBuilder->get(),
             $width,
-            $height
+            $height,
+            0
         );
     }
 
@@ -52,13 +53,15 @@ class CaptchaRepository implements CaptchaInfoStorage{
             $height
         );
         $ctime = time();
+        $captchaExpires = $ctime + $availableDurationInSec;
         $this->addCaptchaInfo(
             $captchaInfo->phrase,
             $ctime,
-            $ctime + $availableDurationInSec,
+            $captchaExpires,
             $actionID,
             $clientAddr
         );
+        $captchaInfo->expires = $captchaExpires;
         return $captchaInfo;
     }
 
