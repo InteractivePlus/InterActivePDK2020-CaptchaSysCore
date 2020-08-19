@@ -92,7 +92,7 @@ class CaptchaRepository implements CaptchaInfoStorage{
         int $actionID = 0,
         ?string $clientAddr = NULL
     ) : bool{
-        return $this->checkCaptchaPhrase(
+        return $this->_Storage->checkCaptchaPhrase(
             $phrase,
             $actionID,
             $clientAddr

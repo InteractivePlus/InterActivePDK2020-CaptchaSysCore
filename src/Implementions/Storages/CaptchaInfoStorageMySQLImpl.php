@@ -53,6 +53,9 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
         int $actionID = 0,
         ?string $clientAddr = NULL
     ) : bool{
+        if(empty($phrase)){
+            return false;
+        }
         $ctime = time();
         $this->_Database->where('phrase',strtolower($phrase));
         $this->_Database->where('actionID',$actionID);
