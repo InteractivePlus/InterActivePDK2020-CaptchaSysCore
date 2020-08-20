@@ -14,7 +14,7 @@
     },
     "autoload":{
         "psr-4":{
-            "InteracitvePlus\\PDK2020CaptchaCore\\": "src/"
+            "InteractivePlus\\PDK2020CaptchaCore\\": "src/"
         }
     },
     "autoload-dev":{
