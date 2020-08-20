@@ -6,16 +6,19 @@ interface CaptchaInfoStorage{
         int $generationTime,
         int $expireTime,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void;
     public function checkCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : bool;
     public function deleteCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void;
     public function clearInvalidPhrases() : void;

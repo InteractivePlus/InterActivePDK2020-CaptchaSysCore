@@ -40,6 +40,7 @@ class CaptchaRepository implements CaptchaInfoStorage{
     public function generateAndSaveCaptcha(
         int $availableDurationInSec,
         int $actionID,
+        int $appuid = 0,
         ?string $clientAddr = NULL,
         int $numDigits = 5,
         ?string $phraseRewrite = NULL,
@@ -59,6 +60,7 @@ class CaptchaRepository implements CaptchaInfoStorage{
             $ctime,
             $captchaExpires,
             $actionID,
+            $appuid,
             $clientAddr
         );
         $captchaInfo->expires = $captchaExpires;
@@ -73,6 +75,7 @@ class CaptchaRepository implements CaptchaInfoStorage{
         int $generationTime,
         int $expireTime,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void{
         $this->_Storage->addCaptchaInfo(
@@ -80,6 +83,7 @@ class CaptchaRepository implements CaptchaInfoStorage{
             $generationTime,
             $expireTime,
             $actionID,
+            $appuid,
             $clientAddr
         );
     }
@@ -90,11 +94,13 @@ class CaptchaRepository implements CaptchaInfoStorage{
     public function checkCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : bool{
         return $this->_Storage->checkCaptchaPhrase(
             $phrase,
             $actionID,
+            $appuid,
             $clientAddr
         );
     }
@@ -105,11 +111,13 @@ class CaptchaRepository implements CaptchaInfoStorage{
     public function deleteCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void{
         $this->_Storage->deleteCaptchaPhrase(
             $phrase,
             $actionID,
+            $appuid,
             $clientAddr
         );
     }

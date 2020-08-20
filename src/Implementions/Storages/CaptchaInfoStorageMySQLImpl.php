@@ -23,6 +23,7 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
         int $generationTime,
         int $expireTime,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void{
         $insertData = array(
@@ -30,7 +31,8 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
             'gen_time' => $generationTime,
             'expire_time' => $expireTime,
             'clientAddr' => $clientAddr,
-            'actionID' => $actionID
+            'actionID' => $actionID,
+            'appuid' => $appuid
         );
         $insertState = $this->_Database->insert('captchas',$insertData);
         if(!$insertState){
@@ -51,6 +53,7 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
     public function checkCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : bool{
         if(empty($phrase)){
@@ -59,6 +62,7 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
         $ctime = time();
         $this->_Database->where('phrase',strtolower($phrase));
         $this->_Database->where('actionID',$actionID);
+        $this->_Database->where('appuid',$appuid);
         if(!empty($clientAddr)){
             $this->_Database->where('clientAddr',$clientAddr);
         }
@@ -77,10 +81,12 @@ class CaptchaInfoStorageMySQLImpl implements CaptchaInfoStorage{
     public function deleteCaptchaPhrase(
         string $phrase,
         int $actionID = 0,
+        int $appuid = 0,
         ?string $clientAddr = NULL
     ) : void{
         $this->_Database->where('phrase',strtolower($phrase));
         $this->_Database->where('actionID',$actionID);
+        $this->_Database->where('appuid',$appuid);
         if(!empty($clientAddr)){
             $this->_Database->where('clientAddr',$clientAddr);
         }
