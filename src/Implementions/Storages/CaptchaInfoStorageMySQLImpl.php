@@ -1,5 +1,5 @@
 <?php
-namespace InteractivePlus\PDK2020CaptchaCore\Implementions\Storage;
+namespace InteractivePlus\PDK2020CaptchaCore\Implementions\Storages;
 
 use InteractivePlus\PDK2020CaptchaCore\Interfaces\Storages\CaptchaInfoStorage;
 use InteractivePlus\PDK2020Core\Exceptions\PDKException;
